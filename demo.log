@@ -1641,3 +1641,16 @@ java.lang.NumberFormatException: For input string: "22.5"
 	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_301]
 
 2022-02-08 23:27:04.275  INFO 4444 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-02-08 23:27:08.450  INFO 19052 --- [main] alen.demo.DemoApplication                : Starting DemoApplication on Alen with PID 19052 (D:\cms\sjtu\demo\target\classes started by Alen in D:\cms\sjtu\demo)
+2022-02-08 23:27:08.453  INFO 19052 --- [main] alen.demo.DemoApplication                : No active profile set, falling back to default profiles: default
+2022-02-08 23:27:09.678  INFO 19052 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-02-08 23:27:09.690  INFO 19052 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-08 23:27:09.690  INFO 19052 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-02-08 23:27:09.791  INFO 19052 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-02-08 23:27:09.791  INFO 19052 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1288 ms
+2022-02-08 23:27:09.958  INFO 19052 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-08 23:27:10.106  INFO 19052 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-02-08 23:27:10.109  INFO 19052 --- [main] alen.demo.DemoApplication                : Started DemoApplication in 2.044 seconds (JVM running for 2.416)
+2022-02-08 23:27:14.584  INFO 19052 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-08 23:27:14.584  INFO 19052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-02-08 23:27:14.589  INFO 19052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
