@@ -1,0 +1,9 @@
+alen\demo\service\WeatherService.class
+alen\demo\service\WeatherServiceImpl.class
+alen\demo\util\HttpClientUtil.class
+alen\demo\entity\Province.class
+alen\demo\DemoApplication.class
+alen\demo\controller\TemperatueController.class
+alen\demo\entity\City.class
+alen\demo\entity\Country.class
+alen\demo\entity\WeatherInfo.class
