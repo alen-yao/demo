@@ -13,11 +13,11 @@ import java.util.List;
  */
 public interface WeatherService {
 
-    List<Province> getProvinces() throws Exception;
+    List<Province> getProvinces();
 
-    List<City> getCities(String proCode) throws Exception;
+    List<City> getCities(String proCode);
 
-    List<Country> getCountries(String proCode, String cityCode) throws Exception;
+    List<Country> getCountries(String proCode, String cityCode);
 
     WeatherInfo getWeatherInfo(String proCode, String cityCode, String countryCode);
 }

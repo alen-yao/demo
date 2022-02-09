@@ -5,6 +5,7 @@ import alen.demo.entity.Country;
 import alen.demo.entity.Province;
 import alen.demo.entity.WeatherInfo;
 import alen.demo.service.WeatherService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,46 +23,75 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping(value = "/api/demo/temperature")
+@Slf4j
 public class TemperatueController {
 
     @Autowired
     private WeatherService weatherService;
 
+    /**
+     * getTemperature
+     *
+     * @param province
+     * @param city
+     * @param country
+     * @return
+     * @throws Exception
+     */
     @GetMapping(value = "/getTemperature")
     public Optional<Integer> getTemperature(@RequestParam String province, @RequestParam String city, @RequestParam String country) throws Exception {
+        log.info("getTemperature start");
         List<Province> provinceList = weatherService.getProvinces();
         if(provinceList == null || provinceList.isEmpty()){
+            log.error("No province result");
             throw new Exception("No province result");
         }
         String provinceCode = getProCode(provinceList, province);
         if(StringUtils.isEmpty(provinceCode)){
+            log.error("Invalid province name: {}", province);
             throw new Exception("Invalid province name");
         }
 
         List<City> cityList = weatherService.getCities(provinceCode);
         if(cityList == null || cityList.isEmpty()){
+            log.error("No province result");
             throw new Exception("No city result");
         }
         String cityCode = getCityCode(cityList, city);
         if(StringUtils.isEmpty(cityCode)){
+            log.error("Invalid city name: {}", city);
             throw new Exception("Invalid city name");
         }
 
         List<Country> countryList = weatherService.getCountries(provinceCode, cityCode);
         if(countryList == null || countryList.isEmpty()){
+            log.error("No country result");
             throw new Exception("No country result");
         }
         String countryCode = getCountryCode(countryList, country);
         if(StringUtils.isEmpty(countryCode)){
+            log.error("Invalid country name: {}", country);
             throw new Exception("Invalid country name");
         }
 
         WeatherInfo weatherInfo = weatherService.getWeatherInfo(provinceCode, cityCode, countryCode);
         if(weatherInfo == null || weatherInfo.getTemp() == null){
+            log.error("No weather result");
             throw new Exception("No weather result");
         }
 
-        return Optional.of(Double.valueOf(weatherInfo.getTemp()).intValue());
+        String temp = weatherInfo.getTemp();
+        log.info("getTemperature value: {}", temp);
+
+        try{
+            int tempInt = Double.valueOf(temp).intValue();
+            return Optional.of(tempInt);
+        }catch (Exception e) {
+            e.printStackTrace();
+            log.error("temperature转换异常: {}", temp, e);
+        }
+
+        return Optional.empty();
     }
 
     private String getCountryCode(List<Country> countryList, String country) {

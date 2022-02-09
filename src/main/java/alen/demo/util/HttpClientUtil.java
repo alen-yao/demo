@@ -27,7 +27,7 @@ public class HttpClientUtil {
         // 创建Httpclient对象
         HttpClientBuilder httpClientBuilder = HttpClients.custom();
 
-        // 设置retry
+        // 设置retry, 5次
         DefaultHttpRequestRetryHandler retryHandler = new DefaultHttpRequestRetryHandler(5, true);
         httpClientBuilder.setRetryHandler(retryHandler);
 

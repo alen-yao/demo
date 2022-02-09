@@ -1,7 +1,7 @@
 server:
   port: 8080
   tomcat:
-    maxConnections: 100
+    maxConnections: 100 #tomcat最大连接数100，达到最大值后，请求阻塞
 
 logging:
   level:
@@ -10,6 +10,7 @@ logging:
     name: demo.log
     path: log
 
+# 定义weather相关APIs
 api:
   province: http://www.weather.com.cn/data/city3jdata/china.html
   city: http://www.weather.com.cn/data/city3jdata/provshi/

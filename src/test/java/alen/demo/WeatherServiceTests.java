@@ -33,27 +33,27 @@ public class WeatherServiceTests{
     }
 
     @Test
-    public void testGetCities() throws Exception {
+    public void testGetCities() {
         Assert.assertNotNull("not null", weatherService.getCities("10119"));
     }
 
     @Test
-    public void testGetCountries() throws Exception {
+    public void testGetCountries() {
         Assert.assertNotNull("not null", weatherService.getCountries("10119", "04"));
     }
 
     @Test
-    public void testGetWeather(){
+    public void testGetWeather() {
         Assert.assertNotNull("not null", weatherService.getWeatherInfo("10119", "04","01"));
     }
 
     @Test(expected = Exception.class)
-    public void testGetCitiesFail() throws Exception {
+    public void testGetCitiesFail() {
         weatherService.getCities("101888819");
     }
 
     @Test(expected = Exception.class)
-    public void testGetCountriesFail() throws Exception {
+    public void testGetCountriesFail() {
         weatherService.getCountries("1011111119","11111");
     }
 }

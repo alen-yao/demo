@@ -6,6 +6,7 @@ import alen.demo.entity.Province;
 import alen.demo.entity.WeatherInfo;
 import alen.demo.util.HttpClientUtil;
 import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * @Author: Alen
  * @Date: 2022/2/8
  */
+@Slf4j
 @Service("WeatherServiceImpl")
 public class WeatherServiceImpl implements WeatherService{
 
@@ -34,13 +36,13 @@ public class WeatherServiceImpl implements WeatherService{
     private static final String URL_SUFFIX = ".html";
 
     @Override
-    public List<Province> getProvinces() throws Exception {
+    public List<Province> getProvinces() {
         String url = proPath;
         String proResult = HttpClientUtil.doGet(url);
         JSONObject list = JSONObject.parseObject(proResult);
 
         if(list.isEmpty()){
-            throw new Exception("No province result");
+            return null;
         }
 
         List<Province> provinceList = new ArrayList<>();
@@ -57,13 +59,13 @@ public class WeatherServiceImpl implements WeatherService{
     }
 
     @Override
-    public List<City> getCities(String proCode) throws Exception {
+    public List<City> getCities(String proCode) {
         String url = cityPath + proCode + URL_SUFFIX;
         String cityResult = HttpClientUtil.doGet(url);
         JSONObject list = JSONObject.parseObject(cityResult);
 
         if(list.isEmpty()){
-            throw new Exception("No city result");
+            return null;
         }
 
         List<City> cityList = new ArrayList<>();
@@ -80,13 +82,13 @@ public class WeatherServiceImpl implements WeatherService{
     }
 
     @Override
-    public List<Country> getCountries(String proCode, String cityCode) throws Exception {
+    public List<Country> getCountries(String proCode, String cityCode) {
         String url = countryPath + proCode + cityCode + URL_SUFFIX;
         String countryResult = HttpClientUtil.doGet(url);
         JSONObject list = JSONObject.parseObject(countryResult);
 
         if(list.isEmpty()){
-            throw new Exception("No country result");
+            return null;
         }
 
         List<Country> countryList = new ArrayList<>();
