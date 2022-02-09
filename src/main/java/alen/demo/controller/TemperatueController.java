@@ -1,5 +1,6 @@
 package alen.demo.controller;
 
+import alen.demo.annotation.TPSLimit;
 import alen.demo.entity.City;
 import alen.demo.entity.Country;
 import alen.demo.entity.Province;
@@ -38,6 +39,7 @@ public class TemperatueController {
      * @return
      * @throws Exception
      */
+    @TPSLimit
     @GetMapping(value = "/getTemperature")
     public Optional<Integer> getTemperature(@RequestParam String province, @RequestParam String city, @RequestParam String country) throws Exception {
         log.info("getTemperature start");

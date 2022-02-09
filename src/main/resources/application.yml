@@ -1,7 +1,5 @@
 server:
   port: 8080
-  tomcat:
-    maxConnections: 100 #tomcat最大连接数100，达到最大值后，请求阻塞
 
 logging:
   level:
